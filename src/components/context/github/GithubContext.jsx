@@ -1,5 +1,5 @@
 import { createContext, useReducer } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParamsnp } from "react-router-dom";
 import githubReducer from "./GithubReducer";
 
 const GithubContext = createContext();
@@ -9,7 +9,7 @@ const GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN;
 export const GithubProvider = ({ children }) => {
   const initialState = {
     users: [],
-    usrt: {},
+    user: {},
     loading: false,
   };
 
@@ -38,16 +38,14 @@ export const GithubProvider = ({ children }) => {
   const getUser = async (login) => {
     setLoading();
 
- 
-
     const response = await fetch(`${GITHUB_API}/user/${login}`, {
       headers: {
         Authorization: `token ${GITHUB_TOKEN}`,
       },
     });
 
-    if(response.status === 404) {
-      window.loacation = '/notfound'
+    if (response.status === 404) {
+      window.loacation = "/notfound";
     } else {
       const data = await response.json();
       dispatch({
@@ -55,8 +53,6 @@ export const GithubProvider = ({ children }) => {
         payload: data,
       });
     }
-
-  
   };
 
   const setLoading = () => dispatch({ type: "SET_LOADING" });
