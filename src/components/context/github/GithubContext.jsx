@@ -1,5 +1,4 @@
 import { createContext, useReducer } from "react";
-import { useSearchParams } from "react-router-dom";
 import githubReducer from "./GithubReducer";
 
 const GithubContext = createContext();

@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.cusotm-card-image .card.image-full:before{
+    border-radius: .5rem;
+    opacity: .45rem;
+}
